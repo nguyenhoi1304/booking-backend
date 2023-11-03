@@ -1,5 +1,7 @@
 const Room = require("../models/Room");
 const Hotel = require("../models/Hotel");
+const TransactionModel = require("../models/Transaction");
+const { isObjectIdOrHexString, isValidObjectId } = require("mongoose");
 
 //Create Room
 exports.createRoom = async (req, res, next) => {
@@ -35,7 +37,6 @@ exports.putRoom = async (req, res, next) => {
 //DELETE Room
 exports.deleteRoom = async (req, res, next) => {
   try {
-    // xóa Room dựa trên params id
     await Room.findByIdAndDelete(req.params.id);
 
     res.status(200).json("Room đã được xóa");

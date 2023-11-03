@@ -1,6 +1,6 @@
 const Hotel = require("../models/Hotel");
 const Room = require("../models/Room");
-const Transaction = require("../models/Transaction");
+const TransactionModel = require("../models/Transaction");
 
 //CREATE Hotel
 exports.createHotel = async (req, res, next) => {
@@ -29,7 +29,6 @@ exports.putHotel = async (req, res) => {
 // Lấy toàn bộ khách sạn hiện có
 exports.AllHotels = async (req, res) => {
   try {
-    // xóa hotel dựa trên params id
     const hotels = await Hotel.find();
     res.status(200).json(hotels);
   } catch (err) {
@@ -42,7 +41,7 @@ exports.deleteHotel = async (req, res) => {
   try {
     // xóa hotel dựa trên params id
     await Hotel.findByIdAndDelete(req.params.id);
-    res.status(200).json("Hotel đã được xóa");
+    res.status(200).json("hotels đã được xóa");
   } catch (err) {
     next(err);
   }
