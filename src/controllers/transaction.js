@@ -45,7 +45,8 @@ exports.postTransactionById = async (req, res, next) => {
 
     res.json(dataTransactions);
   } catch (err) {
-    res.json(err);
+    next(err);
+    return;
   }
 };
 
@@ -58,6 +59,7 @@ exports.transactionlatest = async (req, res, next) => {
     const transactionlatest = dataTransactions.slice(0, 9);
     res.json(transactionlatest);
   } catch (err) {
-    res.json(err);
+    next(err);
+    return;
   }
 };
