@@ -1,6 +1,6 @@
 const Hotel = require("../models/Hotel");
 const Room = require("../models/Room");
-const TransactionModel = require("../models/Transaction");
+const Transaction = require("../models/Transaction");
 
 //CREATE Hotel
 exports.createHotel = async (req, res, next) => {

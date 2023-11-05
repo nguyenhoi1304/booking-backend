@@ -1,7 +1,5 @@
 const Room = require("../models/Room");
 const Hotel = require("../models/Hotel");
-const TransactionModel = require("../models/Transaction");
-const { isObjectIdOrHexString, isValidObjectId } = require("mongoose");
 
 //Create Room
 exports.createRoom = async (req, res, next) => {
