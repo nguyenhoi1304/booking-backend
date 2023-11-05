@@ -12,24 +12,29 @@ exports.Transaction = async (req, res, next) => {
 };
 
 exports.postTransaction = async (req, res, next) => {
-  //nhận vào các thông tin người nhập khi chọn
-  const { user, hotel, room, dateStart, dateEnd, price, payment, status } =
-    req.body;
+  try {
+    //nhận vào các thông tin người nhập khi chọn
+    const { user, hotel, room, dateStart, dateEnd, price, payment, status } =
+      req.body;
 
-  const data = {
-    user: user,
-    hotel: hotel,
-    room: room,
-    dateStart: dateStart,
-    dateEnd: dateEnd,
-    price: +price,
-    payment: payment,
-    status: status,
-  };
+    const data = {
+      user: user,
+      hotel: hotel,
+      room: room,
+      dateStart: dateStart,
+      dateEnd: dateEnd,
+      price: +price,
+      payment: payment,
+      status: status,
+    };
 
-  const newTransaction = await TransactionModel.create(data);
-  const result = await newTransaction.save();
-  res.json(result);
+    const newTransaction = await TransactionModel.create(data);
+    const result = await newTransaction.save();
+    res.json(result);
+  } catch (err) {
+    next(err);
+    return;
+  }
 };
 
 exports.postTransactionById = async (req, res, next) => {
